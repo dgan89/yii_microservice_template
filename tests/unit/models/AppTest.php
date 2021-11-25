@@ -10,6 +10,6 @@ class AppTest extends \Codeception\Test\Unit
 {
     public function testFindUserById()
     {
-        expect_that(true);
+        expect_that(false);
     }
 }
