@@ -32,4 +32,14 @@ class AppTest extends \Codeception\Test\Unit
     {
         expect_that(true);
     }
+
+    public function testFindUser5()
+    {
+        expect_that(true);
+    }
+
+    public function testFindUser6()
+    {
+        expect_that(true);
+    }
 }
