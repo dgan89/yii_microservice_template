@@ -29,13 +29,7 @@ class Test
      */
     private $d;
 
-    /**
-     * Dsss sadsas
-     *
-     * @param mixed $var2 Dsfdasdas asd s
-     *
-     * @return int
-     */
+
     public function test($var2): int
     {
         $var = (int)1;
