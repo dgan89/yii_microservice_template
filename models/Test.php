@@ -8,6 +8,7 @@
 
 namespace app\models;
 
+
 /**
  * Class Test
  *
@@ -18,9 +19,9 @@ class Test
     /**
      * Ssdas sad
      *
-     * @var integer
+     * @var int
      */
-    private int $t;
+    private int $t = 0;
 
     /**
      * Das das dasd
