@@ -44,6 +44,8 @@ class Test
      *
      * @return void
      */
+
+
     public function test2($var2, $var1 = 1):void
     {
         $var = (int) 1;
