@@ -30,6 +30,13 @@ class Test
      */
     private $d;
 
+    /**
+     * Выфвфывфыв фыв фыв
+     *
+     * @param mixed $var2 Dsdasd sad asd
+     *
+     * @return int
+     */
     public function test($var2): int
     {
         $var = (int)1;
@@ -44,8 +51,6 @@ class Test
      *
      * @return void
      */
-
-
     public function test2($var2, $var1 = 1):void
     {
         $var = (int) 1;
