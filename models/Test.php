@@ -19,7 +19,7 @@ class Test
     /**
      * Ssdas sad
      *
-     * @var int
+     * @var integer
      */
     private int $t = 0;
 
@@ -29,7 +29,6 @@ class Test
      * @var string
      */
     private $d;
-
 
     public function test($var2): int
     {
