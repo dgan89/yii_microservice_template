@@ -1,8 +1,5 @@
 <?php
 
-use mf\micro\web\admin\components\Theme;
-use yii\base\Event;
-
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
@@ -14,31 +11,23 @@ $config = [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
+        '@api' => '@app/src/infrastructure/modules',
     ],
-    'on beforeAction' => function () {
-        $sidebarOptions = require __DIR__ . '/sidebar.php';
-
-        Yii::$container
-            ->get(Theme::class)
-            ->addSidebarOptions($sidebarOptions);
-    },
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'I9O5lo9wJtjim2_PfdkGiyNtKxLaBRw9',
             'parsers' => [
                 'application/json' => 'yii\web\JsonParser',
-            ]
+            ],
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
             'identityClass' => 'app\models\User',
-            'enableAutoLogin' => true,
-        ],
-        'errorHandler' => [
-            'errorAction' => 'site/error',
+            'enableAutoLogin' => false,
+            'enableSession' => false,
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -52,9 +41,22 @@ $config = [
         'db' => $db,
         'urlManager' => [
             'enablePrettyUrl' => true,
+            'enableStrictParsing' => true,
             'showScriptName' => false,
             'rules' => [
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'prefix' => '/api',
+                    'controller' => [
+                        'v1/user',
+                    ],
+                ],
             ],
+        ],
+    ],
+    'modules' => [
+        'v1' => [
+            'class' => 'api\v1\Module',
         ],
     ],
     'params' => $params,
@@ -62,12 +64,6 @@ $config = [
 
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment
-    $config['bootstrap'][] = 'debug';
-    $config['modules']['debug'] = [
-        'class' => 'yii\debug\Module',
-        // uncomment the following to add your IP if you are not connecting from localhost.
-        'allowedIPs' => ['127.0.0.1', '::1', '*'],
-    ];
 
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [

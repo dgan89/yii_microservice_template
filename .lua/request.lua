@@ -1,0 +1,1 @@
+ngx.req.set_header("X-Nginx-Request-ID", "Random")
